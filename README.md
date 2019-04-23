@@ -12,7 +12,7 @@ Del paquete conocemos su destino y si está pago o no. Puede entregarse cuando e
 **Mensajeros posibles:**
 
 - Roberto: viaja en bicicleta ó camión y debemos contar tanto su peso como el del transporte. La bicicleta pesa 8kg, mientras que el camión pesa media tonelada por cada acoplado. Roberto no tiene un mango, gracias que tiene cubiertas, y no puede llamar a nadie.
-- Chuck Norris: pesa 900 kg y puede llamar a cualquier persona del universo con sólo llevarse el pulgar al oído y el meñique a la boca.
+-0y                                   Chuck Norris: pesa 900 kg y puede llamar a cualquier persona del universo con sólo llevarse el pulgar al oído y el meñique a la boca.
 - Neo: vuela, así que no pesa nada. Y anda con celular, el muy canchero. El tema es que a veces no tiene crédito.
 
 **Tests**
