@@ -1,8 +1,20 @@
+import paquete.*
+
 object mensajeria {
-	var mensajeros = #{}
+	var property mensajeros = []
 	
-	method contratar(_mensajero) { mensajeros.add(_mensajero)}
+	method contratar(unMensajero) { mensajeros.add(unMensajero);  }
 	
-	method mensajeros() { return mensajeros }
-	
+	method despedir(unMensajero) { mensajeros.remove(unMensajero); }
+
+	method despedirTodos() { mensajeros.clear() }
+
+	method tamanio() { return mensajeros.size() }
+
+	method tamanioGrande() { return mensajeros.size() > 2 }
+
+	method puedeSerEntregado(unPaquete) { return mensajeros.first().puedeLlevar(unPaquete) }
+
+	method pesoDelUltimoMensajero() { 
+		return mensajeros.last().peso()}
 }

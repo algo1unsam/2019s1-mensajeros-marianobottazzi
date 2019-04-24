@@ -7,6 +7,8 @@ object chuckNorris {
 	var property peso = 900
 	
 	method puedeLlamar() = true
+	
+	method puedeLlevar(_paquete) = _paquete.pago()
 
 }
 
@@ -17,6 +19,8 @@ object neo {
 
 	method puedeLlamar() = credito
 
+	method puedeLlevar(_paquete) = _paquete.pago()
+
 }
 
 object roberto {
@@ -26,5 +30,8 @@ object roberto {
 	method puedeLlamar() = false
 
 	method peso() = 90 + vehiculo.pesoVehiculo()
+
+	method puedeLlevar(_paquete) = _paquete.pago()
+
 }
 

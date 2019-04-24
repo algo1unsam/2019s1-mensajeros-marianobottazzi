@@ -1,4 +1,8 @@
+import mensajerias.*
 import mensajeros.*
+import paquete.*
+import destinos.*
+import vehiculos.*
 
 test "La mensajeria tiene a neo como empleado si lo agregarmos" {
 	mensajeria.contratar(neo)
@@ -7,7 +11,70 @@ test "La mensajeria tiene a neo como empleado si lo agregarmos" {
 
 test "Si neo es empleado, Hay un mensajero que puede enviar el paquete" {
 	mensajeria.contratar(neo)
-	paquete.pagar()
-	paquete.destino(matrix)
 	assert.that(mensajeria.mensajeros().contains(neo))
+}
+
+test "neo no puede llevar un paquete no pago a la matrix" {
+	mensajeria.contratar(neo)
+	neo.credito(true)
+	paquete.pago(false)
+	paquete.destino(matrix)
+	assert.notThat(paquete.destino()
+	.dejaPasar(neo) && neo.puedeLlevar(paquete))
+}
+
+test "roberto puede llevar paquete pago en un camion de un solo acoplado" {
+	mensajeria.contratar(roberto)
+	roberto.vehiculo(camion)
+	camion.acoplados(1)
+	paquete.pago(true)
+	paquete.destino(puenteBroklyn)
+	assert.that(paquete.destino().dejaPasar(roberto))
+	
+}
+
+test "mensajeria contrata" {
+	mensajeria.contratar(roberto)
+	mensajeria.contratar(neo)
+	assert.that(mensajeria.mensajeros().contains(roberto) 
+		&& mensajeria.mensajeros().contains(neo)
+	)
+}
+
+test "mensajeria despide" {
+	mensajeria.contratar(roberto)
+	mensajeria.contratar(neo)
+	mensajeria.despedir(neo)
+	assert.notThat(mensajeria.mensajeros().contains(neo) )
+}
+
+test "mensajeria despide a todos"{
+	mensajeria.despedirTodos()
+	assert.that(mensajeria.mensajeros().isEmpty())
+}
+
+test "mensajeria tamaño" {
+	mensajeria.contratar(roberto)
+	mensajeria.contratar(neo)
+	mensajeria.contratar(chuckNorris)
+	mensajeria.despedir(neo)
+	assert.equals(2, mensajeria.tamanio())
+	assert.notThat(mensajeria.tamanioGrande())
+}
+
+test "puede ser entregado por el primer mensajero" {
+	mensajeria.contratar(roberto)
+	mensajeria.contratar(neo)
+	mensajeria.contratar(chuckNorris)
+	mensajeria.despedir(neo)
+	paquete.pago(true)
+	assert.that(mensajeria.puedeSerEntregado(paquete))
+}
+
+test "peso del ultimo mesajero" {
+	mensajeria.contratar(roberto)
+	mensajeria.contratar(neo)
+	mensajeria.contratar(chuckNorris)
+	mensajeria.despedir(neo)
+	assert.equals(900, mensajeria.pesoDelUltimoMensajero())
 }
